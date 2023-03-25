@@ -6,17 +6,47 @@ using System.Threading.Tasks;
 
 namespace ChatNamespace
 {
-    enum Humeur
+    enum HumeurChat
     {
         bonne,
         mauvaise
     }
     internal class Chat
     {
-        string nom;
-        Humeur humeur;      
-        
-        
+        public string NomChat { get; set; }
+        public HumeurChat HumeurChat { get; set; }
+        public string BestyC { get; set; }
+         public Chat(string nomChat, HumeurChat humeurChat, string bestyc = "")
+        {
+            NomChat = nomChat;
+            HumeurChat = humeurChat;
+            BestyC = bestyc;
+        }   
 
+        public void AvoirMeilleurAmi(string best)
+        {
+            if (BestyC == "")
+            {
+                BestyC =best;
+            }
+            else
+            {
+                Console.WriteLine("Sorry " +NomChat + " a déjà un meilleur ami qui est: "+ BestyC);
+            }
+        }
+
+        public void ChangerMeilleur(string best)
+        {
+            if (BestyC != "")
+            {
+                BestyC = best;
+            }
+
+        }
+
+        public override string ToString()
+        {
+            return $"{NomChat} est de {HumeurChat} humeur et son meilleur ami est {BestyC} \n";
+        }
     }
 }
